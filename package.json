@@ -1,0 +1,19 @@
+{
+  "name": "arlotris-food",
+  "version": "1.0.0",
+  "description": "Project for the 4th year of CESI",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Troulet/ArLoTris-Food.git"
+  },
+  "author": "Tristan Roulet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Troulet/ArLoTris-Food/issues"
+  },
+  "homepage": "https://github.com/Troulet/ArLoTris-Food#readme"
+}
