@@ -1,5 +1,5 @@
 {
-  "name": "arlotris-food",
+  "name": "cesilicious",
   "version": "1.0.0",
   "description": "Project for the 4th year of CESI",
   "main": "index.js",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Troulet/ArLoTris-Food/issues"
   },
-  "homepage": "https://github.com/Troulet/ArLoTris-Food#readme"
+  "homepage": "https://github.com/Troulet/ArLoTris-Food#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+  }
 }
