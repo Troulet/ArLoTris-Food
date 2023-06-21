@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const deliverySchema = mongoose.Schema({
-    deliveryId: { type: String, required: true },
+    _id: { type: ObjectId, required: true},
+    //deliveryId: { type: String, required: true },
     delivererId: { type: String, required: true },
     deliveryAdress: { type: String, required: true },
     deliveryTime: { type: String, required: true },
