@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const Order = require('../schema/order');
 
 // Update a specific order by orderId
 router.put('/:orderId', async (req, res) => {
     try {
       const order = await Order.findOneAndUpdate(
-        { orderId: req.params.orderId },
+        { _id: req.params.OrderId },
         req.body,
         { new: true }
       );

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
-    orderId: { type: String, required: true },
+    _id: { type: ObjectId, required: true},
+    //orderId: { type: String, required: true },
     userId: { type: String, required: true },
     restaurantId: { type: String, required: true },
-    ordersDetails: { type: Object, required: true },
+    ordersDetails: { type: Array, required: true },
     orderPayment: { type: Object, required: true },
     orderStatus: { type: String, required: true },
     orderDate: { type: String, required: true },

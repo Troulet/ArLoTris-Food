@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const Order = require('../schema/order');
 
 // Get a specific order by restaurantId

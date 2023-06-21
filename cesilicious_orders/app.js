@@ -1,26 +1,26 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-var postOrderRouter = require('./routes/postOrder');
-var getOrdersRouter = require('./routes/getOrders');
-var getOrderByOrderIdRouter = require('./routes/getOrderByOrderId');
-var getOrderByUserIdRouter = require('./routes/getOrderByUserId');
-var getOrderByDelivererIdRouter = require('./routes/getOrderByDelivererId');
-var getOrderByRestaurantIdRouter = require('./routes/getOrderByRestaurantId');
-var putOrderByOrderIdRouter = require('./routes/putOrderByOrderId');
-var putOrderByUserIdRouter = require('./routes/putOrderByUserId');
-var putOrderByDelivererIdRouter = require('./routes/putOrderByDelivererId');
-var putOrderByRestaurantIdRouter = require('./routes/putOrderByRestaurantId');
-var deleteOrderByOrderIdRouter = require('./routes/deleteOrderByOrderId');
-var deleteOrderByUserIdRouter = require('./routes/deleteOrderByUserId');
-var deleteOrderByDelivererIdRouter = require('./routes/deleteOrderByDelivererId');
-var deleteOrderByRestaurantIdRouter = require('./routes/deleteOrderByRestaurantId');
+const postOrderRouter = require('./routes/postOrder');
+const getOrdersRouter = require('./routes/getOrders');
+const getOrderByOrderIdRouter = require('./routes/getOrderByOrderId');
+const getOrderByUserIdRouter = require('./routes/getOrderByUserId');
+const getOrderByDelivererIdRouter = require('./routes/getOrderByDelivererId');
+const getOrderByRestaurantIdRouter = require('./routes/getOrderByRestaurantId');
+const putOrderByOrderIdRouter = require('./routes/putOrderByOrderId');
+const putOrderByUserIdRouter = require('./routes/putOrderByUserId');
+const putOrderByDelivererIdRouter = require('./routes/putOrderByDelivererId');
+const putOrderByRestaurantIdRouter = require('./routes/putOrderByRestaurantId');
+const deleteOrderByOrderIdRouter = require('./routes/deleteOrderByOrderId');
+const deleteOrderByUserIdRouter = require('./routes/deleteOrderByUserId');
+const deleteOrderByDelivererIdRouter = require('./routes/deleteOrderByDelivererId');
+const deleteOrderByRestaurantIdRouter = require('./routes/deleteOrderByRestaurantId');
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -38,7 +38,7 @@ module.exports = app;
 mongoose.connect(process.env.MONGODB_URI,
     { useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'CesiLicious'
+    dbName: 'cesilicious'
     })
   .then(() => console.log('Connexion à MongoDB Orders réussie !'))
   .catch(() => console.log('Connexion à MongoDB Orders échouée !'));
