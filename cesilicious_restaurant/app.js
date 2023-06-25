@@ -25,6 +25,12 @@ app.use('/restaurants', getRestaurantsRouter);
 app.use('/restaurants', putRestaurantByRestaurantIdRouter);
 app.use('/restaurants', deleteRestaurantByRestaurantIdRouter);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 module.exports = app;
 
 mongoose.connect(process.env.MONGODB_URI,

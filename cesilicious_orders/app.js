@@ -33,6 +33,12 @@ app.use('/users', getOrderByUserIdRouter, putOrderByUserIdRouter, deleteOrderByU
 app.use('/deliverers', getOrderByDelivererIdRouter, putOrderByDelivererIdRouter, deleteOrderByDelivererIdRouter);
 app.use('/restaurants', getOrderByRestaurantIdRouter, putOrderByRestaurantIdRouter, deleteOrderByRestaurantIdRouter);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 module.exports = app;
 
 mongoose.connect(process.env.MONGODB_URI,
