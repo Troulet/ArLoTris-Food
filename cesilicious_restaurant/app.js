@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-require('dotenv').config()
-const mongoose = require('mongoose')
+require('dotenv').config();
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const postRestaurantRouter = require('./routes/postRestaurant');
 const getRestaurantsRouter = require('./routes/getRestaurants');
@@ -18,18 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/restaurants', postRestaurantRouter);
 app.use('/restaurants', getRestaurantByRestaurantIdRouter);
 app.use('/restaurants', getRestaurantsRouter);
 app.use('/restaurants', putRestaurantByRestaurantIdRouter);
 app.use('/restaurants', deleteRestaurantByRestaurantIdRouter);
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 module.exports = app;
 

@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-require('dotenv').config()
-const mongoose = require('mongoose')
+require('dotenv').config();
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const postOrderRouter = require('./routes/postOrder');
 const getOrdersRouter = require('./routes/getOrders');
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/orders', postOrderRouter, getOrdersRouter, getOrderByOrderIdRouter, putOrderByOrderIdRouter, deleteOrderByOrderIdRouter);
 app.use('/users', getOrderByUserIdRouter, putOrderByUserIdRouter, deleteOrderByUserIdRouter);

@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-require('dotenv').config()
-const mongoose = require('mongoose')
+require('dotenv').config();
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const postDeliveryRouter = require('./routes/postDelivery');
 const getDeliveryRouter = require('./routes/getDeliveryByDeliveryId');
@@ -21,15 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/deliveries', postDeliveryRouter, getDeliveryRouter, getDeliveriesRouter, putDeliveryRouter, deleteDeliveryRouter);
 app.use('/deliverer', getDelivererRouter, deleteDelivererRouter, putDelivererRouter);
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 mongoose.connect(process.env.MONGODB_URI,
     { useNewUrlParser: true,
