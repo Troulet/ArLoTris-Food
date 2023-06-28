@@ -6,7 +6,7 @@ const Order = require('../schema/order');
 router.put('/:orderId', async (req, res) => {
     try {
       const order = await Order.findOneAndUpdate(
-        { _id: req.params.OrderId },
+        { _id: req.params.orderId },
         req.body,
         { new: true }
       );

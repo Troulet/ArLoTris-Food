@@ -5,7 +5,7 @@ const Order = require('../schema/order');
 // Delete a specific order by orderId
 router.delete('/:orderId', async (req, res) => {
     try {
-      const order = await Order.findOneAndDelete({ _id: req.params.OrderId });
+      const order = await Order.findOneAndDelete({ _id: req.params.orderId });
       if (!order) {
         return res.status(404).json({ error: 'Order not found' });
       }
