@@ -14,6 +14,7 @@ const deleteDeliveryRouter = require('./routes/deleteDeliveryByDeliveryId');
 const getDelivererRouter = require('./routes/deleteDeliveryByDelivererId');
 const deleteDelivererRouter = require('./routes/deleteDeliveryByDelivererId');
 const putDelivererRouter = require('./routes/deleteDeliveryByDelivererId');
+const getPerformanceRouter = require('./routes/getPerformance');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use('/deliveries', postDeliveryRouter, getDeliveryRouter, getDeliveriesRouter, putDeliveryRouter, deleteDeliveryRouter);
 app.use('/deliverer', getDelivererRouter, deleteDelivererRouter, putDelivererRouter);
+app.use('/performance', getPerformanceRouter);
 
 mongoose.connect(process.env.MONGODB_URI,
     { useNewUrlParser: true,

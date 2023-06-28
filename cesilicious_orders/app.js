@@ -20,6 +20,7 @@ const deleteOrderByOrderIdRouter = require('./routes/deleteOrderByOrderId');
 const deleteOrderByUserIdRouter = require('./routes/deleteOrderByUserId');
 const deleteOrderByDelivererIdRouter = require('./routes/deleteOrderByDelivererId');
 const deleteOrderByRestaurantIdRouter = require('./routes/deleteOrderByRestaurantId');
+const getPerformanceRouter = require('./routes/getPerformance');
 
 const app = express();
 
@@ -34,12 +35,7 @@ app.use('/orders', postOrderRouter, getOrdersRouter, getOrderByOrderIdRouter, pu
 app.use('/users', getOrderByUserIdRouter, putOrderByUserIdRouter, deleteOrderByUserIdRouter);
 app.use('/deliverers', getOrderByDelivererIdRouter, putOrderByDelivererIdRouter, deleteOrderByDelivererIdRouter);
 app.use('/restaurants', getOrderByRestaurantIdRouter, putOrderByRestaurantIdRouter, deleteOrderByRestaurantIdRouter);
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use('/performance', getPerformanceRouter);
 
 module.exports = app;
 

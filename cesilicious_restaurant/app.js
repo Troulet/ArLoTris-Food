@@ -11,6 +11,7 @@ const getRestaurantsRouter = require('./routes/getRestaurants');
 const getRestaurantByRestaurantIdRouter = require('./routes/getRestaurantByRestaurantId');
 const putRestaurantByRestaurantIdRouter = require('./routes/putRestaurantByRestaurantId');
 const deleteRestaurantByRestaurantIdRouter = require('./routes/deleteRestaurantByRestaurantId');
+const getPerformanceRouter = require('./routes/getPerformance');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/restaurants', getRestaurantByRestaurantIdRouter);
 app.use('/restaurants', getRestaurantsRouter);
 app.use('/restaurants', putRestaurantByRestaurantIdRouter);
 app.use('/restaurants', deleteRestaurantByRestaurantIdRouter);
+app.use('/performance', getPerformanceRouter);
 
 module.exports = app;
 
