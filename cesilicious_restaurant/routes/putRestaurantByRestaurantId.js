@@ -6,7 +6,7 @@ const Restaurant = require('../schema/restaurant')
 router.put('/:restaurantId', async (req, res) => {
     try {
       const restaurant = await Restaurant.findOneAndUpdate(
-        { restaurantId: req.params.restaurantId },
+        { _id: req.params.restaurantId },
         req.body,
         { new: true }
       );

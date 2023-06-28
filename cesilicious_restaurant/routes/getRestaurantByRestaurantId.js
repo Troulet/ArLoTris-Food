@@ -5,7 +5,7 @@ const Restaurant = require('../schema/restaurant')
 // Get a specific restaurant by restaurantId
 router.get('/:restaurantId', async (req, res) => {
     try {
-      const restaurant = await Restaurant.findOne({ restaurantId: req.params.restaurantId });
+      const restaurant = await Restaurant.findOne({ _id: req.params.restaurantId });
       if (!restaurant) {
         return res.status(404).json({ error: 'Restaurant not found' });
       }
