@@ -7,6 +7,7 @@ const orderSchema = mongoose.Schema({
     userId: { type: String, required: true },
     restaurantId: { type: String, required: true },
     ordersDetails: { type: Array, required: true },
+    price: { type: Number, required: true },
     orderPayment: { type: String, required: true },
     orderStatus: { type: String, required: true },
     orderDate: { type: Date, required: true },

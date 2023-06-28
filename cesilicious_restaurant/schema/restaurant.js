@@ -11,9 +11,14 @@ const restaurantSchema = mongoose.Schema({
     maxDeliveryTime: { type: String, required: false },
     //estimatedAverageDelivery: { type: String, required: true },
     meansOfPaymentAccepted: { type: Array, required: true },
-    type: { type: Array, required: true },
-    articles: { type: Array, required: true },
-    menus: { type: Array, required: true }
+    type: { type: [String], required: true },
+    articles: { type: [String], required: true },
+    menus: [{
+        name: {type: String, required: false},
+        price: {type: Number, required: false},
+        picture: {type: String, required: false},
+        articles: {type: [String], required: false}
+    }]
 });
 
 module.exports = mongoose.model('restaurant', restaurantSchema);
