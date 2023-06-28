@@ -8,10 +8,10 @@ const pool = require('../schema/db');
 // API route for authenticating a user and generating JWT
 router.post('/', async (req, res) => {
   try {
-    const { name, surname, password } = req.body;
+    const { email, password } = req.body;
 
     // Retrieve the user from the database
-    const user = await pool.query('SELECT * FROM users WHERE name = $1 AND surname = $2', [name, surname]);
+    const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
     if (user.rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
