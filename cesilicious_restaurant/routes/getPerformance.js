@@ -8,11 +8,7 @@ router.get('/', async (req, res) => {
     osUtils.cpuUsage((cpuUsage) => {
         const cpuUsagePercentage = (cpuUsage * 100).toFixed(2);
     
-        const performanceData = {
-          cpuUsage: `${cpuUsagePercentage}%`,
-        };
-    
-        res.json(performanceData);
+        res.send(cpuUsagePercentage);
       });
   } catch (error) {
     res.status(500).json({ error: error.message });
