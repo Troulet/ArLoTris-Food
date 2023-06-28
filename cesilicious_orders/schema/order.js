@@ -10,7 +10,7 @@ const orderSchema = mongoose.Schema({
     orderStatus: { type: String, required: true },
     orderDate: { type: String, required: true },
     orderAddress: { type: String, required: true },
-    delivererId: { type: String, required: true }
+    delivererId: { type: String, required: false }
 });
 
 module.exports = mongoose.model('order', orderSchema);
