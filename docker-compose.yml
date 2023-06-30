@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  cesilicious_auth:
+    build: /cesilicious_auth
+    networks:
+      - api-network
+    container_name: cesilicious_auth
+
+  cesilicious_delivery:
+    build: /cesilicious_delivery
+    networks:
+      - api-network
+    container_name: cesilicious_delivery
+
+  cesilicious_order:
+    build: /cesilicious_orders
+    networks:
+      - api-network
+    container_name: cesilicious_order
+
+  cesilicious_restaurant:
+    build: /cesilicious_restaurant
+    networks:
+      - api-network
+    container_name: cesilicious_restaurant
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - cesilicious_auth
+      - cesilicious_delivery
+      - cesilicious_order
+      - cesilicious_restaurant
+    ports:
+      - 80:80
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
+    ipam:
+      driver: default
