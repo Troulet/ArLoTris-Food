@@ -1,23 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../schema/db');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 // Update a specific restaurant by restaurantId
-router.put('/:userId', async(req, res) => {
-    const id = req.params.userId;
-    const { name, surname, address, email } = req.body;
+router.put('/:email', async(req, res) => {
+    const email = req.params.email;
+    const { password } = req.body;
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Update the user in the PostgreSQL database
-    const query = "UPDATE users SET \"name\" = $1, \"surname\" = $2, \"address\" = $3, \"email\" = $4 WHERE \"ID\" = $5";
-    const values = [name, surname, address, email, id];
+    const query = "UPDATE users SET password = $1 WHERE email = $2";
+    const values = [hashedPassword, email];
 
     pool.query(query, values, (err, result) => {
         if (err) {
             console.error('Error executing query', err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            res.json({id, name, surname, email, address});
+            res.json({email, hashedPassword});
         }
     });
   });

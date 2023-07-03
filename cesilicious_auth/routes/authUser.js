@@ -4,6 +4,7 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const pool = require('../schema/db');
+const axios = require('axios');
 
 // API route for authenticating a user and generating JWT
 router.post('/', async (req, res) => {
@@ -25,9 +26,14 @@ router.post('/', async (req, res) => {
     }
 
     // Generate JWT
-    const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({ userId: user.rows[0].ID }, process.env.JWT_SECRET_KEY);
 
-    res.json({ token });
+    let restaurantIds;
+    await axios.get('http://localhost:3000/users/' + user.rows[0].ID + '/').then((response) => {
+      restaurantIds = response.data;
+    })
+
+    res.json([{ token }, user.rows[0], restaurantIds]);
   } catch (error) {
     console.error('Error authenticating user:', error);
     res.status(500).json({ error: 'An internal server error occurred' });

@@ -12,6 +12,7 @@ const getRestaurantByRestaurantIdRouter = require('./routes/getRestaurantByResta
 const putRestaurantByRestaurantIdRouter = require('./routes/putRestaurantByRestaurantId');
 const deleteRestaurantByRestaurantIdRouter = require('./routes/deleteRestaurantByRestaurantId');
 const getPerformanceRouter = require('./routes/getPerformance');
+const getRestaurantByUserIdRouter = require('./routes/getRestaurantByUserId');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/restaurants', getRestaurantsRouter);
 app.use('/restaurants', putRestaurantByRestaurantIdRouter);
 app.use('/restaurants', deleteRestaurantByRestaurantIdRouter);
 app.use('/performance', getPerformanceRouter);
+app.use('/users', getRestaurantByUserIdRouter);
 
 module.exports = app;
 

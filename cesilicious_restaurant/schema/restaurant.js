@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const restaurantSchema = mongoose.Schema({
     _id: { type: ObjectId, required: true},
+    userId: { type: String, required: true},
     //restaurantId: { type: String, required: true },
     restaurantName: { type: String, required: true },
     picture: { type: String, required: false },
@@ -12,6 +13,7 @@ const restaurantSchema = mongoose.Schema({
     //estimatedAverageDelivery: { type: String, required: true },
     meansOfPaymentAccepted: { type: Array, required: true },
     type: { type: [String], required: true },
+    city: { type: String, required: false },
     articles: { type: [String], required: true },
     menus: [{
         name: {type: String, required: false},

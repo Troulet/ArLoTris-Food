@@ -25,8 +25,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/deliveries', postDeliveryRouter, getDeliveryRouter, getDeliveriesRouter, putDeliveryRouter, deleteDeliveryRouter);
-app.use('/deliverer', getDelivererRouter, deleteDelivererRouter, putDelivererRouter);
+app.use('/deliveries', postDeliveryRouter);
+app.use('/deliveries', getDeliveryRouter);
+app.use('/deliveries', getDeliveriesRouter);
+app.use('/deliveries', putDeliveryRouter);
+app.use('/deliveries', deleteDeliveryRouter);
+app.use('/deliverer', getDelivererRouter);
+app.use('/deliverer', deleteDelivererRouter);
+app.use('/deliverer', putDelivererRouter);
 app.use('/performance', getPerformanceRouter);
 
 mongoose.connect(process.env.MONGODB_URI,

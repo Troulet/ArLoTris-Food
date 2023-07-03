@@ -8,6 +8,8 @@ router.post('/', async (req, res) => {
   try {
     let orderJSON = req.body;
     orderJSON._id = new ObjectId().toString();
+    orderJSON.orderStatus = "Ordered";
+    orderJSON.delivererId = "0";
     const order = new Order(orderJSON);
     const savedOrder = await order.save();
     res.status(201).json(savedOrder);

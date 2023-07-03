@@ -11,7 +11,6 @@ const orderSchema = mongoose.Schema({
     orderPayment: { type: String, required: true },
     orderStatus: { type: String, required: true },
     orderDate: { type: Date, required: true },
-    orderAddress: { type: String, required: true },
     delivererId: { type: String, required: false }
 });
 

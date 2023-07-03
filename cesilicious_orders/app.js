@@ -31,10 +31,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/orders', postOrderRouter, getOrdersRouter, getOrderByOrderIdRouter, putOrderByOrderIdRouter, deleteOrderByOrderIdRouter);
-app.use('/users', getOrderByUserIdRouter, putOrderByUserIdRouter, deleteOrderByUserIdRouter);
-app.use('/deliverers', getOrderByDelivererIdRouter, putOrderByDelivererIdRouter, deleteOrderByDelivererIdRouter);
-app.use('/restaurants', getOrderByRestaurantIdRouter, putOrderByRestaurantIdRouter, deleteOrderByRestaurantIdRouter);
+app.use('/orders', postOrderRouter);
+app.use('/orders', getOrdersRouter);
+app.use('/orders', getOrderByOrderIdRouter);
+app.use('/orders', putOrderByOrderIdRouter);
+app.use('/orders', deleteOrderByOrderIdRouter);
+app.use('/users', getOrderByUserIdRouter);
+app.use('/users', putOrderByUserIdRouter);
+app.use('/users', deleteOrderByUserIdRouter);
+app.use('/deliverers', getOrderByDelivererIdRouter);
+app.use('/deliverers', putOrderByDelivererIdRouter);
+app.use('/deliverers', deleteOrderByDelivererIdRouter);
+app.use('/restaurants', getOrderByRestaurantIdRouter);
+app.use('/restaurants', putOrderByRestaurantIdRouter);
+app.use('/restaurants', deleteOrderByRestaurantIdRouter);
 app.use('/performance', getPerformanceRouter);
 
 module.exports = app;

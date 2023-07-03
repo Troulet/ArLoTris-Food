@@ -9,7 +9,10 @@ const postUserRouter = require('./routes/postUser');
 const getUserByIdRouter = require('./routes/getUserById');
 const getUserBySponsorIdRouter = require('./routes/getUserBySponsorId');
 const putUserByIdRouter = require('./routes/putUserById');
+const putIdSponsorByIdRouter = require ('./routes/putIdSponsorById');
 const getPerformanceRouter = require('./routes/getPerformance');
+const deleteUserByIdRouter = require('./routes/deleteUserById');
+const putPasswordByEmailRouter = require('./routes/putPasswordByEmail');
 
 const app = express();
 
@@ -24,7 +27,10 @@ app.use('/login', authUserRouter);
 app.use('/user', postUserRouter);
 app.use('/user', getUserByIdRouter);
 app.use('/user', putUserByIdRouter);
+app.use('/user', deleteUserByIdRouter);
 app.use('/sponsor', getUserBySponsorIdRouter);
+app.use('/sponsor', putIdSponsorByIdRouter);
 app.use('/performance', getPerformanceRouter);
+app.use('/password', putPasswordByEmailRouter);
 
 module.exports = app;
