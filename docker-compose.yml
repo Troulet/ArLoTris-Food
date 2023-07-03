@@ -6,6 +6,10 @@ services:
     networks:
       - api-network
     container_name: cesilicious_auth
+    depends_on:
+      - db
+    links:
+      - db
 
   cesilicious_delivery:
     build: /cesilicious_delivery
@@ -39,8 +43,24 @@ services:
     networks:
       - api-network
 
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: cesiliciousql
+    ports:
+      - 5432:5432
+    networks:
+      - api-network
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
 networks:
   api-network:
     driver: bridge
-    ipam:
-      driver: default
+
+volumes:
+  db:
+    driver: local
