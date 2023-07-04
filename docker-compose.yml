@@ -3,6 +3,8 @@ version: '3.9'
 services:
   cesilicious_auth:
     build: /cesilicious_auth
+    environment:
+      JWT_SECRET_KEY: 'cesilicious'
     networks:
       - api-network
     container_name: cesilicious_auth
@@ -13,18 +15,24 @@ services:
 
   cesilicious_delivery:
     build: /cesilicious_delivery
+    environment:
+      MONGODB_URI: 'mongodb+srv://admin:IyCtbSX4rda45h6C@cesilicious.w0zbplf.mongodb.net/deliveries/'
     networks:
       - api-network
     container_name: cesilicious_delivery
 
   cesilicious_order:
     build: /cesilicious_orders
+    environment:
+      MONGODB_URI: 'mongodb+srv://admin:IyCtbSX4rda45h6C@cesilicious.w0zbplf.mongodb.net/orders/'
     networks:
       - api-network
     container_name: cesilicious_order
 
   cesilicious_restaurant:
     build: /cesilicious_restaurant
+    environment:
+      MONGODB_URI: 'mongodb+srv://admin:IyCtbSX4rda45h6C@cesilicious.w0zbplf.mongodb.net/restaurants/'
     networks:
       - api-network
     container_name: cesilicious_restaurant
