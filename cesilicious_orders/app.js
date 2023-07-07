@@ -21,6 +21,8 @@ const deleteOrderByUserIdRouter = require('./routes/deleteOrderByUserId');
 const deleteOrderByDelivererIdRouter = require('./routes/deleteOrderByDelivererId');
 const deleteOrderByRestaurantIdRouter = require('./routes/deleteOrderByRestaurantId');
 const getPerformanceRouter = require('./routes/getPerformance');
+const getCountOrdersByRestaurantIdRouter = require('./routes/getCountOrdersByRestaurantId');
+const getCountCurrentOrdersByRestaurantIdRouter = require('./routes/getCountCurrentOrdersByRestaurantId');
 
 const app = express();
 
@@ -46,6 +48,8 @@ app.use('/restaurants', getOrderByRestaurantIdRouter);
 app.use('/restaurants', putOrderByRestaurantIdRouter);
 app.use('/restaurants', deleteOrderByRestaurantIdRouter);
 app.use('/performance', getPerformanceRouter);
+app.use('/countOrders', getCountOrdersByRestaurantIdRouter);
+app.use('/countOrders/current', getCountCurrentOrdersByRestaurantIdRouter);
 
 module.exports = app;
 
