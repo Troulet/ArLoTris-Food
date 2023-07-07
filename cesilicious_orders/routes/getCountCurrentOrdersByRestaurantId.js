@@ -10,7 +10,7 @@ router.get('/:restaurantId', (req, res) => {
         return res.status(404).json({ error: 'Order not found' });
       }
       order.count().then( (count) => {
-        res.json(count);
+        res.json({nbCommand: count});
       }).catch((err) => {
         console.log(err);
       })
