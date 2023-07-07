@@ -23,6 +23,7 @@ const deleteOrderByRestaurantIdRouter = require('./routes/deleteOrderByRestauran
 const getPerformanceRouter = require('./routes/getPerformance');
 const getCountOrdersByRestaurantIdRouter = require('./routes/getCountOrdersByRestaurantId');
 const getCountCurrentOrdersByRestaurantIdRouter = require('./routes/getCountCurrentOrdersByRestaurantId');
+const getMoneyByRestaurantIdRouter = require('./routes/getMoneyByRestaurantId');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/restaurants', deleteOrderByRestaurantIdRouter);
 app.use('/performance', getPerformanceRouter);
 app.use('/countOrders', getCountOrdersByRestaurantIdRouter);
 app.use('/countOrders/current', getCountCurrentOrdersByRestaurantIdRouter);
+app.use('/money', getMoneyByRestaurantIdRouter);
 
 module.exports = app;
 
